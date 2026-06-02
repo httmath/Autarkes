@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Comunidade AUTARKES — Aprenda habilidades reais para se tornar mais preparado, autossuficiente e independente. Por apenas R$14,90/mês.">
+<title>AUTARKES — Comunidade de Autossuficiência e Preparação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0F1115;
+    --bg2: #1C1F26;
+    --olive: #556B2F;
+    --olive-light: #6B8A3C;
+    --orange: #D97706;
+    --orange-bright: #F59E0B;
+    --text: #F5F5F5;
+    --gray: #BDBDBD;
+    --muted: #6B7280;
+    --border: rgba(85,107,47,0.25);
+    --glow: rgba(217,119,6,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* TYPOGRAPHY */
+  h1, h2, h3, .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+  .mono { font-family: 'DM Mono', monospace; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(15,17,21,0.95) 0%, transparent 100%);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(85,107,47,0.1);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.15em;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-logo-dot { color: var(--orange); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: #0F1115;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .nav-cta:hover { background: var(--orange-bright); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(85,107,47,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 20%, rgba(217,119,6,0.08) 0%, transparent 60%),
+      linear-gradient(180deg, #0F1115 0%, #131619 50%, #0F1115 100%);
+  }
+
+  /* Grid lines decoration */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(85,107,47,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(85,107,47,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    text-align: center;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--olive-light);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--olive);
+    opacity: 0.5;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 7.5rem);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .hero h1 .accent { color: var(--orange); }
+
+  .hero-sub {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: var(--gray);
+    max-width: 620px;
+    margin: 0 auto 3rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: #0F1115;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.12em;
+    padding: 1rem 3rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    transition: all 0.25s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--orange-bright);
+    opacity: 0;
+    transition: opacity 0.25s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(217,119,6,0.3); }
+  .btn-primary:hover::after { opacity: 1; }
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .price-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--olive-light);
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .price-badge::before {
+    content: '▸';
+    color: var(--orange);
+    font-size: 0.6rem;
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.4;
+    animation: float 2.5s ease-in-out infinite;
+  }
+
+  .scroll-indicator span { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--gray); }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--orange), transparent); }
+
+  @keyframes float { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+  /* SECTIONS COMMON */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--olive-light);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--orange); }
+
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 1rem 0;
+  }
+
+  /* PROBLEM SECTION */
+  .problem { background: var(--bg2); position: relative; overflow: hidden; }
+
+  .problem::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--olive) 30%, var(--orange) 70%, transparent);
+    opacity: 0.3;
+  }
+
+  .problem-intro {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--gray);
+    max-width: 700px;
+    margin-bottom: 4rem;
+    font-weight: 300;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .problem-card {
+    background: #0F1115;
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+    overflow: hidden;
+  }
+
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--orange);
+    transition: height 0.4s;
+  }
+
+  .problem-card:hover { border-color: rgba(217,119,6,0.3); transform: translateY(-4px); }
+  .problem-card:hover::before { height: 100%; }
+
+  .problem-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .problem-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .problem-card p { font-size: 0.95rem; color: var(--gray); line-height: 1.6; }
+
+  /* SOLUTION */
+  .solution { position: relative; }
+
+  .solution-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .solution-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .solution-ring {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: rotate 25s linear infinite;
+  }
+
+  .solution-ring::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    border: 1px dashed rgba(85,107,47,0.2);
+  }
+
+  .solution-ring-inner {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(85,107,47,0.15) 0%, transparent 70%);
+    border: 1px solid rgba(85,107,47,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rotate 25s linear infinite reverse;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 0.05em;
+    color: var(--olive-light);
+    text-align: center;
+    line-height: 1;
+  }
+
+  .solution-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    top: -4px; left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 12px var(--orange);
+  }
+
+  @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .solution-text .section-title { margin-bottom: 1.5rem; }
+
+  .solution-text p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+
+  .solution-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .pillar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    padding: 0.6rem 0.8rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+  }
+
+  .pillar-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
+
+  /* BENEFITS */
+  .benefits { background: var(--bg2); }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .benefit-item:hover {
+    border-color: var(--olive);
+    box-shadow: 0 0 20px rgba(85,107,47,0.1);
+  }
+
+  .benefit-check {
+    width: 28px;
+    height: 28px;
+    background: rgba(85,107,47,0.15);
+    border: 1px solid var(--olive);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--olive-light);
+    font-size: 0.85rem;
+    margin-top: 2px;
+  }
+
+  .benefit-text h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+    color: var(--text);
+  }
+
+  .benefit-text p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .feature-card {
+    background: var(--bg);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.3s;
+    overflow: hidden;
+  }
+
+  .feature-card:hover { background: #13161b; }
+
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--olive), var(--orange));
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+
+  .feature-card:hover::after { transform: scaleX(1); }
+
+  .feature-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--orange);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.2rem;
+  }
+
+  .feature-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+
+  .feature-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .feature-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.6rem;
+    background: rgba(85,107,47,0.08);
+    border: 1px solid rgba(85,107,47,0.2);
+    color: var(--gray);
+  }
+
+  /* TRANSFORMATION */
+  .transformation { background: var(--bg2); position: relative; }
+
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+
+  .transform-col { }
+
+  .transform-col-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .before-label { color: var(--muted); }
+  .after-label { color: var(--orange); }
+
+  .transform-list { list-style: none; }
+
+  .transform-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    transition: background 0.2s;
+  }
+
+  .before-list li { color: var(--muted); background: rgba(255,255,255,0.02); }
+  .before-list li::before { content: '✕'; color: #4B5563; font-size: 0.75rem; }
+
+  .after-list li { color: var(--text); background: rgba(85,107,47,0.06); border: 1px solid rgba(85,107,47,0.1); }
+  .after-list li::before { content: '✓'; color: var(--olive-light); font-size: 0.85rem; }
+
+  .transform-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 3.5rem;
+  }
+
+  .arrow-shaft {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--orange));
+  }
+
+  .arrow-head {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid var(--orange);
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .testimonial {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .testimonial:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+  .testimonial-quote {
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--orange);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+  }
+
+  .avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .avatar-1 { background: linear-gradient(135deg, #3A5A20, #6B8A3C); color: #F5F5F5; }
+  .avatar-2 { background: linear-gradient(135deg, #8B4513, #D97706); color: #F5F5F5; }
+  .avatar-3 { background: linear-gradient(135deg, #2C3E50, #556B2F); color: #F5F5F5; }
+
+  .author-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+
+  .author-role { font-size: 0.82rem; color: var(--muted); }
+
+  .stars {
+    margin-left: auto;
+    color: var(--orange);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* PRICING */
+  .pricing { background: var(--bg2); }
+
+  .pricing-wrapper {
+    max-width: 540px;
+    margin: 3rem auto 0;
+  }
+
+  .pricing-card {
+    background: var(--bg);
+    border: 1px solid var(--olive);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--olive), var(--orange));
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--orange);
+    color: #0F1115;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.7rem;
+    text-transform: uppercase;
+  }
+
+  .pricing-header {
+    padding: 2.5rem 2.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .plan-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--olive-light);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .price-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .price-currency {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--gray);
+    margin-top: 0.4rem;
+  }
+
+  .price-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .price-decimal {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--gray);
+    margin-top: 0.4rem;
+  }
+
+  .price-period { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; }
+
+  .price-highlight {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--olive-light);
+    letter-spacing: 0.05em;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .price-highlight::before { content: '▸'; color: var(--orange); }
+
+  .pricing-features {
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pricing-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    font-size: 0.95rem;
+    color: var(--gray);
+    border-bottom: 1px solid rgba(85,107,47,0.06);
+  }
+
+  .pricing-feature:last-child { border-bottom: none; }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    background: rgba(85,107,47,0.15);
+    border: 1px solid var(--olive);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: var(--olive-light);
+    flex-shrink: 0;
+  }
+
+  .pricing-cta {
+    padding: 2rem 2.5rem;
+  }
+
+  .btn-pricing {
+    width: 100%;
+    background: var(--orange);
+    color: #0F1115;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    padding: 1.1rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-pricing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--orange-bright);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .btn-pricing:hover::before { transform: scaleX(1); }
+  .btn-pricing:hover { box-shadow: 0 10px 30px rgba(217,119,6,0.4); transform: translateY(-2px); }
+  .btn-pricing span { position: relative; z-index: 1; }
+
+  .pricing-note {
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-top: 1rem;
+  }
+
+  /* FAQ */
+  .faq { }
+
+  .faq-list {
+    margin-top: 3rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    text-align: left;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.15rem;
+    transition: color 0.2s;
+  }
+
+  .faq-question:hover { color: var(--orange); }
+
+  .faq-toggle {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: var(--orange);
+    transition: all 0.3s;
+  }
+
+  .faq-item.open .faq-toggle { background: var(--orange); color: #0F1115; }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+
+  .faq-item.open .faq-answer { max-height: 300px; }
+
+  .faq-answer-inner {
+    padding-bottom: 1.5rem;
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: linear-gradient(135deg, #0F1115 0%, #131a0e 50%, #0F1115 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(85,107,47,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 30% at 50% 80%, rgba(217,119,6,0.06) 0%, transparent 60%);
+  }
+
+  .final-cta-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+  .final-cta h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+
+  .final-cta h2 .accent { color: var(--orange); }
+
+  .final-cta p {
+    font-size: 1.2rem;
+    color: var(--gray);
+    margin-bottom: 3rem;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0A0C0F;
+    padding: 3rem 2rem 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand {}
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.15em;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logo span { color: var(--orange); }
+
+  .footer-tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover { color: var(--orange); }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .social-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .social-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+  .footer-bottom {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 4rem 1.25rem; }
+
+    .solution-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .solution-visual { display: none; }
+
+    .features-grid { grid-template-columns: 1fr; }
+
+    .transform-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .transform-arrow { flex-direction: row; padding-top: 0; }
+    .arrow-shaft { width: 60px; height: 2px; background: linear-gradient(to right, transparent, var(--orange)); }
+    .arrow-head { border-left: 12px solid var(--orange); border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-right: none; }
+
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    .footer-top { flex-direction: column; }
+    .footer-links { flex-direction: column; gap: 1rem; }
+
+    .solution-pillars { grid-template-columns: 1fr; }
+  }
+
+  /* GLOW PULSE */
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(217,119,6,0.2); }
+    50% { box-shadow: 0 0 40px rgba(217,119,6,0.4); }
+  }
+
+  .pricing-card { animation: glow-pulse 3s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">AUTARKES<span class="nav-logo-dot">.</span></a>
+  <a href="https://botgram.club/autarkes-premium" class="nav-cta" target="_blank" rel="noopener">Entrar Agora</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Comunidade de Autossuficiência</div>
+    <h1>O mundo está criando<br>pessoas cada vez mais<br><span class="accent">dependentes.</span></h1>
+    <p class="hero-sub">Enquanto a maioria aprende a depender de aplicativos, serviços e sistemas, a Comunidade AUTARKES ensina habilidades reais para se tornar mais preparado, mais útil e mais autossuficiente.</p>
+    <div class="hero-actions">
+      <a href="https://botgram.club/autarkes-premium" class="btn-primary" target="_blank" rel="noopener"><span>Entrar na Comunidade</span></a>
+      <div class="price-badge">Apenas R$14,90/mês</div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Rolar</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="section-label">O Problema</div>
+    <h2 class="section-title reveal">E se amanhã<br>alguma coisa falhar?</h2>
+    <div class="divider"></div>
+    <p class="problem-intro reveal">A modernidade trouxe conforto — mas também criou uma dependência silenciosa que a maioria não percebe até ser tarde demais.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <span class="problem-icon">⚡</span>
+        <h3>Dependência de Energia</h3>
+        <p>Sem eletricidade, a maioria das pessoas não sabe como se virar por mais de 24 horas. Tudo para.</p>
+      </div>
+      <div class="problem-card reveal">
+        <span class="problem-icon">📶</span>
+        <h3>Dependência Digital</h3>
+        <p>Mapas, pagamentos, comunicação — tudo na palma da mão. E quando a internet cai?</p>
+      </div>
+      <div class="problem-card reveal">
+        <span class="problem-icon">🏪</span>
+        <h3>Cadeia de Suprimentos</h3>
+        <p>Prateleiras vazias, preços altos, escassez. As crises de abastecimento expõem o quanto dependemos do sistema.</p>
+      </div>
+      <div class="problem-card reveal">
+        <span class="problem-icon">🔧</span>
+        <h3>Falta de Habilidades</h3>
+        <p>Quantas gerações perderam o conhecimento de consertar, cultivar, preservar e se virar com o que têm?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <div class="solution-inner">
+      <div class="solution-visual">
+        <div class="solution-ring">
+          <div class="solution-dot"></div>
+          <div class="solution-ring-inner">AUTO<br>SUFICI<br>ÊNCIA</div>
+        </div>
+      </div>
+      <div class="solution-text">
+        <div class="section-label">A Solução</div>
+        <h2 class="section-title reveal">A AUTARKES existe<br>para inverter<br>essa lógica.</h2>
+        <p class="reveal">A comunidade reúne pessoas que decidiram não esperar pelos outros — e começaram a construir capacidade real, conhecimento prático e confiança genuína.</p>
+        <p class="reveal">Não ensinamos medo. Ensinamos competência.</p>
+        <div class="solution-pillars reveal">
+          <div class="pillar"><div class="pillar-dot"></div>Sobrevivencialismo</div>
+          <div class="pillar"><div class="pillar-dot"></div>Autossuficiência</div>
+          <div class="pillar"><div class="pillar-dot"></div>Preparação</div>
+          <div class="pillar"><div class="pillar-dot"></div>Bushcraft</div>
+          <div class="pillar"><div class="pillar-dot"></div>Homesteading</div>
+          <div class="pillar"><div class="pillar-dot"></div>Resiliência</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="container">
+    <div class="section-label">O Que Você Ganha</div>
+    <h2 class="section-title reveal">Habilidades que ficam<br>com você para sempre.</h2>
+    <div class="benefits-grid">
+      <div class="benefit-item reveal">
+        <div class="benefit-check">✓</div>
+        <div class="benefit-text">
+          <h4>Habilidades para a Vida Real</h4>
+          <p>Conteúdo prático, aplicável imediatamente no seu dia a dia e em situações de emergência.</p>
+        </div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-check">✓</div>
+        <div class="benefit-text">
+          <h4>Mais Autonomia</h4>
+          <p>Reduza sua dependência de serviços, tecnologias e sistemas que podem falhar a qualquer momento.</p>
+        </div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-check">✓</div>
+        <div class="benefit-text">
+          <h4>Preparação para Emergências</h4>
+          <p>Saiba exatamente o que fazer quando as coisas saírem do controle — para você e sua família.</p>
+        </div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-check">✓</div>
+        <div class="benefit-text">
+          <h4>Sobrevivencialismo Aplicado</h4>
+          <p>Técnicas testadas e validadas para situações reais, ensinadas de forma acessível e progressiva.</p>
+        </div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-check">✓</div>
+        <div class="benefit-text">
+          <h4>Autossuficiência Prática</h4>
+          <p>Aprenda a produzir, conservar, economizar e organizar — com menos e de forma mais inteligente.</p>
+        </div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-check">✓</div>
+        <div class="benefit-text">
+          <h4>Comunidade Alinhada</h4>
+          <p>Pessoas com os mesmos valores, dispostas a compartilhar experiências e crescer juntas.</p>
+        </div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-check">✓</div>
+        <div class="benefit-text">
+          <h4>Conteúdos Exclusivos</h4>
+          <p>Biblioteca, cursos, vídeos e materiais desenvolvidos especialmente para os membros AUTARKES.</p>
+        </div>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-check">✓</div>
+        <div class="benefit-text">
+          <h4>Evolução Contínua</h4>
+          <p>Novos conteúdos adicionados regularmente para que você nunca pare de aprender e crescer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container">
+    <div class="section-label">O Que Está Incluído</div>
+    <h2 class="section-title reveal">Tudo que você precisa<br>em um só lugar.</h2>
+    <div class="features-grid reveal">
+      <div class="feature-card">
+        <div class="feature-num">01 —</div>
+        <div class="feature-icon">📚</div>
+        <h3>Biblioteca de Conhecimento</h3>
+        <div class="feature-tags">
+          <span class="tag">PDFs</span>
+          <span class="tag">Guias</span>
+          <span class="tag">Apostilas</span>
+          <span class="tag">Checklists</span>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">02 —</div>
+        <div class="feature-icon">🎓</div>
+        <h3>Cursos e Treinamentos</h3>
+        <div class="feature-tags">
+          <span class="tag">Organizado</span>
+          <span class="tag">Progressivo</span>
+          <span class="tag">Atualizado</span>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">03 —</div>
+        <div class="feature-icon">🎬</div>
+        <h3>Vídeos Exclusivos</h3>
+        <div class="feature-tags">
+          <span class="tag">Prático</span>
+          <span class="tag">Demonstrações</span>
+          <span class="tag">Online</span>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">04 —</div>
+        <div class="feature-icon">🎙️</div>
+        <h3>Lives e Reuniões</h3>
+        <div class="feature-tags">
+          <span class="tag">Perguntas</span>
+          <span class="tag">Discussões</span>
+          <span class="tag">Comunidade</span>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">05 —</div>
+        <div class="feature-icon">🏕️</div>
+        <h3>Sobrevivencialismo</h3>
+        <div class="feature-tags">
+          <span class="tag">Preparação</span>
+          <span class="tag">Planejamento</span>
+          <span class="tag">Organização</span>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">06 —</div>
+        <div class="feature-icon">🌱</div>
+        <h3>Autossuficiência</h3>
+        <div class="feature-tags">
+          <span class="tag">Produção</span>
+          <span class="tag">Conservação</span>
+          <span class="tag">Economia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="transformation">
+  <div class="container">
+    <div class="section-label" style="justify-content:center;">Sua Transformação</div>
+    <h2 class="section-title reveal" style="text-align:center;">Quem você será<br>daqui a alguns meses?</h2>
+    <div class="transform-grid reveal">
+      <div class="transform-col">
+        <div class="transform-col-label before-label">ANTES</div>
+        <ul class="transform-list before-list">
+          <li>Dependente dos sistemas modernos</li>
+          <li>Despreparado para emergências</li>
+          <li>Sem habilidades práticas reais</li>
+          <li>Sempre precisando de ajuda</li>
+          <li>Vulnerável a crises e falhas</li>
+          <li>Sem confiança em situações difíceis</li>
+        </ul>
+      </div>
+      <div class="transform-arrow">
+        <div class="arrow-shaft"></div>
+        <div class="arrow-head"></div>
+      </div>
+      <div class="transform-col">
+        <div class="transform-col-label after-label">DEPOIS</div>
+        <ul class="transform-list after-list">
+          <li>Mais preparado para o inesperado</li>
+          <li>Confiante em qualquer situação</li>
+          <li>Capaz de resolver problemas reais</li>
+          <li>Mais autônomo e independente</li>
+          <li>Resiliente diante de adversidades</li>
+          <li>Uma referência para quem está ao redor</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-label">Depoimentos</div>
+    <h2 class="section-title reveal">O que dizem os membros.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Entrei sem saber nada de sobrevivencialismo. Em três meses, já montei minha reserva de emergência, aprendi técnicas básicas de primeiros socorros e me sinto muito mais seguro para proteger minha família. Vale cada centavo.</p>
+        <div class="testimonial-author">
+          <div class="avatar avatar-1">RM</div>
+          <div>
+            <span class="author-name">RAFAEL M.</span>
+            <span class="author-role">Membro desde 2024</span>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Sempre me interessei por autossuficiência mas não sabia por onde começar. A AUTARKES organizou tudo de forma tão clara que consegui aplicar logo de início. Hoje tenho uma horta, aprendi conservação de alimentos e me sinto outra pessoa.</p>
+        <div class="testimonial-author">
+          <div class="avatar avatar-2">CA</div>
+          <div>
+            <span class="author-name">CARLA A.</span>
+            <span class="author-role">Membro desde 2024</span>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">Por R$14,90 eu esperava pouco. Me surpreendi com a qualidade e quantidade do conteúdo. A comunidade é ativa, as lives são práticas e os materiais são muito bem feitos. Recomendo para qualquer pessoa que quer ser mais capaz e independente.</p>
+        <div class="testimonial-author">
+          <div class="avatar avatar-3">TS</div>
+          <div>
+            <span class="author-name">TIAGO S.</span>
+            <span class="author-role">Membro desde 2023</span>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-label" style="justify-content:center;">Investimento</div>
+    <h2 class="section-title reveal" style="text-align:center; max-width:700px; margin-left:auto; margin-right:auto;">Quanto vale aprender habilidades que ficam com você para a vida toda?</h2>
+    <div class="pricing-wrapper reveal">
+      <div class="pricing-card">
+        <div class="pricing-badge">Mais Popular</div>
+        <div class="pricing-header">
+          <div class="plan-name">Comunidade AUTARKES</div>
+          <div class="price-main">
+            <span class="price-currency">R$</span>
+            <span class="price-value">14</span>
+            <span class="price-decimal">,90</span>
+          </div>
+          <div class="price-period">/ mês · Cancele quando quiser</div>
+          <div class="price-highlight">Menos de R$0,50 por dia</div>
+        </div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="check-icon">✓</div>Biblioteca completa de conhecimento</div>
+          <div class="pricing-feature"><div class="check-icon">✓</div>Cursos e treinamentos organizados</div>
+          <div class="pricing-feature"><div class="check-icon">✓</div>Vídeos exclusivos e práticos</div>
+          <div class="pricing-feature"><div class="check-icon">✓</div>Lives e reuniões ao vivo</div>
+          <div class="pricing-feature"><div class="check-icon">✓</div>Comunidade ativa de membros</div>
+          <div class="pricing-feature"><div class="check-icon">✓</div>Atualizações e novos conteúdos constantes</div>
+        </div>
+        <div class="pricing-cta">
+          <a href="https://botgram.club/autarkes-premium" class="btn-pricing" target="_blank" rel="noopener"><span>Quero Entrar Agora</span></a>
+          <p class="pricing-note">Acesso imediato · Pagamento seguro · Sem fidelidade</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label" style="justify-content:center;">Dúvidas Frequentes</div>
+    <h2 class="section-title reveal" style="text-align:center;">Perguntas e respostas.</h2>
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          O acesso é imediato após o pagamento?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sim. Assim que o pagamento for confirmado, você recebe acesso imediato a toda a plataforma — biblioteca, cursos, vídeos e comunidade. Não precisa esperar nada.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Posso cancelar quando quiser?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sim, sem burocracia. Você pode cancelar a qualquer momento pelo próprio painel, sem necessidade de entrar em contato com ninguém. Não há taxa de cancelamento nem fidelidade obrigatória.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Preciso ter experiência prévia em sobrevivencialismo?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Não. A comunidade foi desenvolvida para pessoas de todos os níveis — desde quem está começando do zero até quem já tem algum conhecimento e quer aprofundar. O conteúdo é progressivo e acessível.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Novos conteúdos serão adicionados?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sim, constantemente. Novos materiais, vídeos, guias, checklists e cursos são adicionados regularmente. Sua assinatura sempre te dá acesso a todo o conteúdo novo sem custo adicional.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          A comunidade funciona no celular?
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sim. A plataforma é totalmente responsiva e funciona em qualquer dispositivo — celular, tablet ou computador. Você pode acessar seu conteúdo em qualquer lugar, a qualquer hora.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-content reveal">
+      <div class="section-label" style="justify-content:center; margin-bottom:2rem;">Comece Agora</div>
+      <h2>Enquanto o mundo cria pessoas <span class="accent">dependentes</span>, você pode escolher se tornar mais preparado.</h2>
+      <p>Comece hoje por apenas R$14,90 por mês.</p>
+      <a href="https://botgram.club/autarkes-premium" class="btn-primary" target="_blank" rel="noopener"><span>Entrar na Comunidade AUTARKES</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">AUTARKES<span>.</span></div>
+        <div class="footer-tagline">Preparação · Autonomia · Resiliência</div>
+      </div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Termos de Uso</a>
+        <a href="#" class="footer-link">Privacidade</a>
+        <a href="#" class="footer-link">Contato</a>
+        <a href="#faq" class="footer-link">FAQ</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+        <a href="#" class="social-btn" aria-label="YouTube">yt</a>
+        <a href="#" class="social-btn" aria-label="Telegram">tg</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 AUTARKES. Todos os direitos reservados.</div>
+      <div class="footer-copy">Feito para quem escolhe ser mais capaz.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(15,17,21,0.98)';
+      nav.style.borderBottomColor = 'rgba(85,107,47,0.2)';
+    } else {
+      nav.style.background = '';
+      nav.style.borderBottomColor = '';
+    }
+  });
+</script>
+</body>
+</html>
