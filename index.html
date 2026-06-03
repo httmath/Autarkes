@@ -17,11 +17,12 @@
     --olive-light: #6B8A3C;
     --orange: #D97706;
     --orange-bright: #F59E0B;
+    --red: #DC2626;
+    --green: #16A34A;
     --text: #F5F5F5;
     --gray: #BDBDBD;
     --muted: #6B7280;
     --border: rgba(85,107,47,0.25);
-    --glow: rgba(217,119,6,0.15);
   }
 
   html { scroll-behavior: smooth; }
@@ -30,12 +31,20 @@
     background: var(--bg);
     color: var(--text);
     font-family: 'Crimson Pro', Georgia, serif;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.7;
     overflow-x: hidden;
+    text-transform: uppercase;
   }
 
-  /* NOISE TEXTURE OVERLAY */
+  /* Preserve lowercase for elements that shouldn't be ALL CAPS */
+  .lowercase, footer, .footer-copy, .faq-answer-inner,
+  .testimonial-text, .problem-card p, .solution-text p,
+  .benefit-text p, .hero-sub, .price-period, .pricing-note,
+  .author-role, .footer-tagline {
+    text-transform: none;
+  }
+
   body::before {
     content: '';
     position: fixed;
@@ -46,8 +55,7 @@
     opacity: 0.4;
   }
 
-  /* TYPOGRAPHY */
-  h1, h2, h3, .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+  h1, h2, h3, h4, .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; text-transform: uppercase; }
   .mono { font-family: 'DM Mono', monospace; }
 
   /* NAV */
@@ -115,7 +123,6 @@
       linear-gradient(180deg, #0F1115 0%, #131619 50%, #0F1115 100%);
   }
 
-  /* Grid lines decoration */
   .hero-bg::after {
     content: '';
     position: absolute;
@@ -136,7 +143,7 @@
 
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 0.25em;
     color: var(--olive-light);
     text-transform: uppercase;
@@ -165,13 +172,14 @@
   .hero h1 .accent { color: var(--orange); }
 
   .hero-sub {
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
     color: var(--gray);
-    max-width: 620px;
+    max-width: 640px;
     margin: 0 auto 3rem;
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     line-height: 1.65;
+    text-transform: none;
   }
 
   .hero-actions {
@@ -185,7 +193,7 @@
     background: var(--orange);
     color: #0F1115;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     letter-spacing: 0.12em;
     padding: 1rem 3rem;
     border: none;
@@ -195,6 +203,7 @@
     position: relative;
     transition: all 0.25s;
     clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    text-transform: uppercase;
   }
 
   .btn-primary::after {
@@ -213,19 +222,16 @@
 
   .price-badge {
     font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     color: var(--olive-light);
     letter-spacing: 0.1em;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-transform: uppercase;
   }
 
-  .price-badge::before {
-    content: '▸';
-    color: var(--orange);
-    font-size: 0.6rem;
-  }
+  .price-badge::before { content: '▸'; color: var(--orange); font-size: 0.6rem; }
 
   /* SCROLL INDICATOR */
   .scroll-indicator {
@@ -249,9 +255,10 @@
   /* SECTIONS COMMON */
   section { padding: 6rem 2rem; }
   .container { max-width: 1100px; margin: 0 auto; }
+
   .section-label {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.3em;
     color: var(--olive-light);
     text-transform: uppercase;
@@ -263,10 +270,11 @@
   .section-label::before { content: ''; width: 24px; height: 1px; background: var(--orange); }
 
   .section-title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(2.5rem, 5vw, 4.8rem);
     line-height: 1.05;
     margin-bottom: 1.5rem;
     color: var(--text);
+    text-transform: uppercase;
   }
 
   .divider {
@@ -276,7 +284,7 @@
     margin: 1rem 0;
   }
 
-  /* PROBLEM SECTION */
+  /* PROBLEM */
   .problem { background: var(--bg2); position: relative; overflow: hidden; }
 
   .problem::before {
@@ -293,7 +301,8 @@
     color: var(--gray);
     max-width: 700px;
     margin-bottom: 4rem;
-    font-weight: 300;
+    font-weight: 400;
+    text-transform: none;
   }
 
   .problem-grid {
@@ -323,21 +332,17 @@
   .problem-card:hover { border-color: rgba(217,119,6,0.3); transform: translateY(-4px); }
   .problem-card:hover::before { height: 100%; }
 
-  .problem-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
+  .problem-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
 
   .problem-card h3 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     color: var(--text);
   }
 
-  .problem-card p { font-size: 0.95rem; color: var(--gray); line-height: 1.6; }
+  .problem-card p { font-size: 1rem; color: var(--gray); line-height: 1.65; text-transform: none; }
 
   /* SOLUTION */
   .solution { position: relative; }
@@ -396,8 +401,7 @@
 
   .solution-dot {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 8px; height: 8px;
     background: var(--orange);
     border-radius: 50%;
     top: -4px; left: 50%;
@@ -412,8 +416,9 @@
   .solution-text p {
     color: var(--gray);
     margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    font-weight: 300;
+    font-size: 1.15rem;
+    font-weight: 400;
+    text-transform: none;
   }
 
   .solution-pillars {
@@ -428,12 +433,13 @@
     align-items: center;
     gap: 0.6rem;
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.05em;
     color: var(--text);
     padding: 0.6rem 0.8rem;
     background: var(--bg2);
     border: 1px solid var(--border);
+    text-transform: uppercase;
   }
 
   .pillar-dot { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
@@ -443,7 +449,7 @@
 
   .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
     margin-top: 3rem;
   }
@@ -452,7 +458,7 @@
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    padding: 1.5rem;
+    padding: 1.6rem;
     border: 1px solid var(--border);
     background: var(--bg);
     transition: border-color 0.3s, box-shadow 0.3s;
@@ -464,8 +470,7 @@
   }
 
   .benefit-check {
-    width: 28px;
-    height: 28px;
+    width: 30px; height: 30px;
     background: rgba(85,107,47,0.15);
     border: 1px solid var(--olive);
     display: flex;
@@ -473,19 +478,19 @@
     justify-content: center;
     flex-shrink: 0;
     color: var(--olive-light);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-top: 2px;
   }
 
   .benefit-text h4 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.3rem;
     color: var(--text);
   }
 
-  .benefit-text p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+  .benefit-text p { font-size: 0.95rem; color: var(--muted); line-height: 1.55; text-transform: none; }
 
   /* FEATURES */
   .features-grid {
@@ -499,7 +504,7 @@
 
   .feature-card {
     background: var(--bg);
-    padding: 2.5rem 2rem;
+    padding: 3rem 2.5rem;
     position: relative;
     transition: background 0.3s;
     overflow: hidden;
@@ -522,36 +527,35 @@
 
   .feature-num {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     color: var(--orange);
     letter-spacing: 0.15em;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
+    text-transform: uppercase;
   }
 
-  .feature-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .feature-icon { font-size: 2.2rem; margin-bottom: 1.2rem; }
 
   .feature-card h3 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     letter-spacing: 0.05em;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     color: var(--text);
   }
 
-  .feature-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
+  .feature-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
+  /* TAGS — bigger for checklist items */
   .tag {
     font-family: 'DM Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.78rem;
     letter-spacing: 0.05em;
-    padding: 0.3rem 0.6rem;
+    padding: 0.45rem 0.85rem;
     background: rgba(85,107,47,0.08);
-    border: 1px solid rgba(85,107,47,0.2);
+    border: 1px solid rgba(85,107,47,0.25);
     color: var(--gray);
+    text-transform: uppercase;
   }
 
   /* TRANSFORMATION */
@@ -565,19 +569,19 @@
     margin-top: 4rem;
   }
 
-  .transform-col { }
-
   .transform-col-label {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
     letter-spacing: 0.1em;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
   }
 
-  .before-label { color: var(--muted); }
-  .after-label { color: var(--orange); }
+  /* ANTES = vermelho, DEPOIS = verde */
+  .before-label { color: var(--red); }
+  .after-label { color: var(--green); }
 
   .transform-list { list-style: none; }
 
@@ -585,17 +589,18 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.85rem 1rem;
+    padding: 0.9rem 1rem;
     margin-bottom: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.05rem;
     transition: background 0.2s;
+    text-transform: none;
   }
 
-  .before-list li { color: var(--muted); background: rgba(255,255,255,0.02); }
-  .before-list li::before { content: '✕'; color: #4B5563; font-size: 0.75rem; }
+  .before-list li { color: #F87171; background: rgba(220,38,38,0.05); border: 1px solid rgba(220,38,38,0.12); }
+  .before-list li::before { content: '✕'; color: var(--red); font-size: 0.8rem; flex-shrink: 0; }
 
-  .after-list li { color: var(--text); background: rgba(85,107,47,0.06); border: 1px solid rgba(85,107,47,0.1); }
-  .after-list li::before { content: '✓'; color: var(--olive-light); font-size: 0.85rem; }
+  .after-list li { color: #86EFAC; background: rgba(22,163,74,0.06); border: 1px solid rgba(22,163,74,0.15); }
+  .after-list li::before { content: '✓'; color: var(--green); font-size: 0.9rem; flex-shrink: 0; }
 
   .transform-arrow {
     display: flex;
@@ -607,14 +612,12 @@
   }
 
   .arrow-shaft {
-    width: 2px;
-    height: 60px;
+    width: 2px; height: 60px;
     background: linear-gradient(to bottom, transparent, var(--orange));
   }
 
   .arrow-head {
-    width: 0;
-    height: 0;
+    width: 0; height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 12px solid var(--orange);
@@ -632,7 +635,6 @@
     background: var(--bg2);
     border: 1px solid var(--border);
     padding: 2rem;
-    position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
   }
 
@@ -648,12 +650,13 @@
   }
 
   .testimonial-text {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--gray);
-    line-height: 1.7;
+    line-height: 1.75;
     font-style: italic;
     margin-bottom: 1.5rem;
-    font-weight: 300;
+    font-weight: 400;
+    text-transform: none;
   }
 
   .testimonial-author {
@@ -665,8 +668,7 @@
   }
 
   .avatar {
-    width: 42px;
-    height: 42px;
+    width: 44px; height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -682,35 +684,29 @@
 
   .author-name {
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     color: var(--text);
     display: block;
     margin-bottom: 0.1rem;
+    text-transform: uppercase;
   }
 
-  .author-role { font-size: 0.82rem; color: var(--muted); }
+  .author-role { font-size: 0.85rem; color: var(--muted); text-transform: none; }
 
-  .stars {
-    margin-left: auto;
-    color: var(--orange);
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
-  }
+  .stars { margin-left: auto; color: var(--orange); font-size: 0.8rem; letter-spacing: 0.05em; }
 
   /* PRICING */
   .pricing { background: var(--bg2); }
 
-  .pricing-wrapper {
-    max-width: 540px;
-    margin: 3rem auto 0;
-  }
+  .pricing-wrapper { max-width: 560px; margin: 3rem auto 0; }
 
   .pricing-card {
     background: var(--bg);
     border: 1px solid var(--olive);
     position: relative;
     overflow: hidden;
+    animation: glow-pulse 3s ease-in-out infinite;
   }
 
   .pricing-card::before {
@@ -723,12 +719,11 @@
 
   .pricing-badge {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
+    top: 1.5rem; right: 1.5rem;
     background: var(--orange);
     color: #0F1115;
     font-family: 'DM Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     letter-spacing: 0.1em;
     padding: 0.3rem 0.7rem;
     text-transform: uppercase;
@@ -741,7 +736,7 @@
 
   .plan-name {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.25em;
     color: var(--olive-light);
     text-transform: uppercase;
@@ -755,38 +750,22 @@
     margin-bottom: 0.5rem;
   }
 
-  .price-currency {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    color: var(--gray);
-    margin-top: 0.4rem;
-  }
+  .price-currency { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--gray); margin-top: 0.4rem; }
+  .price-value { font-family: 'Bebas Neue', sans-serif; font-size: 5.5rem; line-height: 1; color: var(--text); }
+  .price-decimal { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--gray); margin-top: 0.4rem; }
 
-  .price-value {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5rem;
-    line-height: 1;
-    color: var(--text);
-  }
-
-  .price-decimal {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    color: var(--gray);
-    margin-top: 0.4rem;
-  }
-
-  .price-period { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; }
+  .price-period { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: none; }
 
   .price-highlight {
     font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--olive-light);
     letter-spacing: 0.05em;
     margin-top: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-transform: uppercase;
   }
 
   .price-highlight::before { content: '▸'; color: var(--orange); }
@@ -800,37 +779,36 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.6rem 0;
-    font-size: 0.95rem;
+    padding: 0.75rem 0;
+    font-size: 1rem;
     color: var(--gray);
     border-bottom: 1px solid rgba(85,107,47,0.06);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   .pricing-feature:last-child { border-bottom: none; }
 
   .check-icon {
-    width: 20px;
-    height: 20px;
+    width: 22px; height: 22px;
     background: rgba(85,107,47,0.15);
     border: 1px solid var(--olive);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--olive-light);
     flex-shrink: 0;
   }
 
-  .pricing-cta {
-    padding: 2rem 2.5rem;
-  }
+  .pricing-cta { padding: 2rem 2.5rem; }
 
   .btn-pricing {
     width: 100%;
     background: var(--orange);
     color: #0F1115;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     letter-spacing: 0.1em;
     padding: 1.1rem;
     border: none;
@@ -841,6 +819,7 @@
     transition: all 0.25s;
     position: relative;
     overflow: hidden;
+    text-transform: uppercase;
   }
 
   .btn-pricing::before {
@@ -860,15 +839,14 @@
   .pricing-note {
     text-align: center;
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.67rem;
     color: var(--muted);
     letter-spacing: 0.08em;
     margin-top: 1rem;
+    text-transform: none;
   }
 
   /* FAQ */
-  .faq { }
-
   .faq-list {
     margin-top: 3rem;
     max-width: 720px;
@@ -876,10 +854,7 @@
     margin-right: auto;
   }
 
-  .faq-item {
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
-  }
+  .faq-item { border-bottom: 1px solid var(--border); overflow: hidden; }
 
   .faq-question {
     width: 100%;
@@ -887,22 +862,23 @@
     border: none;
     color: var(--text);
     text-align: left;
-    padding: 1.5rem 0;
+    padding: 1.6rem 0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    font-family: 'Crimson Pro', serif;
-    font-size: 1.15rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     transition: color 0.2s;
   }
 
   .faq-question:hover { color: var(--orange); }
 
   .faq-toggle {
-    width: 24px;
-    height: 24px;
+    width: 26px; height: 26px;
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
@@ -916,20 +892,16 @@
 
   .faq-item.open .faq-toggle { background: var(--orange); color: #0F1115; }
 
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s;
-  }
-
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
   .faq-item.open .faq-answer { max-height: 300px; }
 
   .faq-answer-inner {
     padding-bottom: 1.5rem;
     color: var(--gray);
-    font-size: 1rem;
-    line-height: 1.7;
-    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    font-weight: 400;
+    text-transform: none;
   }
 
   /* FINAL CTA */
@@ -949,10 +921,10 @@
       radial-gradient(ellipse 30% 30% at 50% 80%, rgba(217,119,6,0.06) 0%, transparent 60%);
   }
 
-  .final-cta-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .final-cta-content { position: relative; z-index: 1; max-width: 740px; margin: 0 auto; }
 
   .final-cta h2 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-size: clamp(2.5rem, 5vw, 4.8rem);
     line-height: 1.05;
     margin-bottom: 1.5rem;
     color: var(--text);
@@ -961,11 +933,12 @@
   .final-cta h2 .accent { color: var(--orange); }
 
   .final-cta p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--gray);
     margin-bottom: 3rem;
     font-style: italic;
-    font-weight: 300;
+    font-weight: 400;
+    text-transform: none;
   }
 
   /* FOOTER */
@@ -973,12 +946,10 @@
     background: #0A0C0F;
     padding: 3rem 2rem 2rem;
     border-top: 1px solid var(--border);
+    text-transform: none;
   }
 
-  .footer-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
 
   .footer-top {
     display: flex;
@@ -989,14 +960,13 @@
     flex-wrap: wrap;
   }
 
-  .footer-brand {}
-
   .footer-logo {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
     letter-spacing: 0.15em;
     color: var(--text);
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
   }
 
   .footer-logo span { color: var(--orange); }
@@ -1009,11 +979,7 @@
     text-transform: uppercase;
   }
 
-  .footer-links {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-  }
+  .footer-links { display: flex; gap: 2.5rem; flex-wrap: wrap; }
 
   .footer-link {
     font-family: 'DM Mono', monospace;
@@ -1027,14 +993,10 @@
 
   .footer-link:hover { color: var(--orange); }
 
-  .footer-social {
-    display: flex;
-    gap: 0.75rem;
-  }
+  .footer-social { display: flex; gap: 0.75rem; }
 
   .social-btn {
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     border: 1px solid var(--border);
     display: flex;
     align-items: center;
@@ -1043,6 +1005,7 @@
     font-size: 0.85rem;
     text-decoration: none;
     transition: all 0.2s;
+    text-transform: uppercase;
   }
 
   .social-btn:hover { border-color: var(--orange); color: var(--orange); }
@@ -1062,6 +1025,7 @@
     font-size: 0.62rem;
     letter-spacing: 0.08em;
     color: var(--muted);
+    text-transform: none;
   }
 
   /* ANIMATIONS */
@@ -1073,35 +1037,26 @@
 
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    section { padding: 4rem 1.25rem; }
-
-    .solution-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .solution-visual { display: none; }
-
-    .features-grid { grid-template-columns: 1fr; }
-
-    .transform-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .transform-arrow { flex-direction: row; padding-top: 0; }
-    .arrow-shaft { width: 60px; height: 2px; background: linear-gradient(to right, transparent, var(--orange)); }
-    .arrow-head { border-left: 12px solid var(--orange); border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-right: none; }
-
-    .testimonials-grid { grid-template-columns: 1fr; }
-
-    .footer-top { flex-direction: column; }
-    .footer-links { flex-direction: column; gap: 1rem; }
-
-    .solution-pillars { grid-template-columns: 1fr; }
-  }
-
-  /* GLOW PULSE */
   @keyframes glow-pulse {
     0%, 100% { box-shadow: 0 0 20px rgba(217,119,6,0.2); }
     50% { box-shadow: 0 0 40px rgba(217,119,6,0.4); }
   }
 
-  .pricing-card { animation: glow-pulse 3s ease-in-out infinite; }
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    section { padding: 4rem 1.25rem; }
+    .solution-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .solution-visual { display: none; }
+    .features-grid { grid-template-columns: 1fr; }
+    .transform-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .transform-arrow { flex-direction: row; padding-top: 0; }
+    .arrow-shaft { width: 60px; height: 2px; background: linear-gradient(to right, transparent, var(--orange)); }
+    .arrow-head { border-left: 12px solid var(--orange); border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-right: none; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-top { flex-direction: column; }
+    .footer-links { flex-direction: column; gap: 1rem; }
+    .solution-pillars { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -1118,7 +1073,7 @@
   <div class="hero-content">
     <div class="hero-eyebrow">Comunidade de Autossuficiência</div>
     <h1>O mundo está criando<br>pessoas cada vez mais<br><span class="accent">dependentes.</span></h1>
-    <p class="hero-sub">Enquanto a maioria aprende a depender de aplicativos, serviços e sistemas, a Comunidade AUTARKES ensina habilidades reais para se tornar mais preparado, mais útil e mais autossuficiente.</p>
+    <p class="hero-sub">A maioria das pessoas passou a vida confiando em sistemas, aplicativos e serviços para resolver tudo. A Comunidade AUTARKES existe para quem decidiu aprender a se virar — com habilidades reais, conhecimento prático e confiança de verdade.</p>
     <div class="hero-actions">
       <a href="https://botgram.club/autarkes-premium" class="btn-primary" target="_blank" rel="noopener"><span>Entrar na Comunidade</span></a>
       <div class="price-badge">Apenas R$14,90/mês</div>
@@ -1136,27 +1091,27 @@
     <div class="section-label">O Problema</div>
     <h2 class="section-title reveal">E se amanhã<br>alguma coisa falhar?</h2>
     <div class="divider"></div>
-    <p class="problem-intro reveal">A modernidade trouxe conforto — mas também criou uma dependência silenciosa que a maioria não percebe até ser tarde demais.</p>
+    <p class="problem-intro reveal">Ninguém acorda pensando que vai precisar sobreviver sem luz, internet ou mercado. Mas quando acontece — e acontece — quem não se preparou descobre que não sabe fazer praticamente nada sozinho.</p>
     <div class="problem-grid">
       <div class="problem-card reveal">
         <span class="problem-icon">⚡</span>
         <h3>Dependência de Energia</h3>
-        <p>Sem eletricidade, a maioria das pessoas não sabe como se virar por mais de 24 horas. Tudo para.</p>
+        <p>Sem energia elétrica, a maioria das pessoas não consegue cozinhar, se comunicar ou armazenar comida por mais de um dia. A vida para completamente.</p>
       </div>
       <div class="problem-card reveal">
         <span class="problem-icon">📶</span>
         <h3>Dependência Digital</h3>
-        <p>Mapas, pagamentos, comunicação — tudo na palma da mão. E quando a internet cai?</p>
+        <p>GPS, pagamento, banco, comunicação — tudo depende de sinal e bateria. Quando a internet cai, muita gente não sabe nem como chegar num lugar sem o celular.</p>
       </div>
       <div class="problem-card reveal">
         <span class="problem-icon">🏪</span>
         <h3>Cadeia de Suprimentos</h3>
-        <p>Prateleiras vazias, preços altos, escassez. As crises de abastecimento expõem o quanto dependemos do sistema.</p>
+        <p>Prateleiras vazias viram rotina em crises. Quem não tem reserva, não tem opção. E quem depende só do supermercado aprende da pior forma.</p>
       </div>
       <div class="problem-card reveal">
         <span class="problem-icon">🔧</span>
-        <h3>Falta de Habilidades</h3>
-        <p>Quantas gerações perderam o conhecimento de consertar, cultivar, preservar e se virar com o que têm?</p>
+        <h3>Falta de Habilidades Básicas</h3>
+        <p>Consertar, cultivar, preservar alimentos, fazer um curativo — habilidades que gerações passadas dominavam foram esquecidas. E ninguém ensina mais.</p>
       </div>
     </div>
   </div>
@@ -1175,8 +1130,8 @@
       <div class="solution-text">
         <div class="section-label">A Solução</div>
         <h2 class="section-title reveal">A AUTARKES existe<br>para inverter<br>essa lógica.</h2>
-        <p class="reveal">A comunidade reúne pessoas que decidiram não esperar pelos outros — e começaram a construir capacidade real, conhecimento prático e confiança genuína.</p>
-        <p class="reveal">Não ensinamos medo. Ensinamos competência.</p>
+        <p class="reveal">A comunidade reúne pessoas que cansaram de depender de tudo e de todos. Gente comum que decidiu aprender habilidades reais, montar suas reservas, conhecer técnicas de sobrevivência e ganhar confiança de verdade.</p>
+        <p class="reveal">Não vendemos medo. Ensinamos capacidade.</p>
         <div class="solution-pillars reveal">
           <div class="pillar"><div class="pillar-dot"></div>Sobrevivencialismo</div>
           <div class="pillar"><div class="pillar-dot"></div>Autossuficiência</div>
@@ -1200,56 +1155,56 @@
         <div class="benefit-check">✓</div>
         <div class="benefit-text">
           <h4>Habilidades para a Vida Real</h4>
-          <p>Conteúdo prático, aplicável imediatamente no seu dia a dia e em situações de emergência.</p>
+          <p>Coisas que você vai usar de verdade — no dia a dia, numa emergência, ou quando menos esperar.</p>
         </div>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-check">✓</div>
         <div class="benefit-text">
           <h4>Mais Autonomia</h4>
-          <p>Reduza sua dependência de serviços, tecnologias e sistemas que podem falhar a qualquer momento.</p>
+          <p>Pare de depender de serviços que podem falhar. Quanto mais você sabe fazer, menos você precisa pedir.</p>
         </div>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-check">✓</div>
         <div class="benefit-text">
           <h4>Preparação para Emergências</h4>
-          <p>Saiba exatamente o que fazer quando as coisas saírem do controle — para você e sua família.</p>
+          <p>Saiba o que fazer quando as coisas saírem do controle — e proteja quem você ama sem depender de ninguém.</p>
         </div>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-check">✓</div>
         <div class="benefit-text">
-          <h4>Sobrevivencialismo Aplicado</h4>
-          <p>Técnicas testadas e validadas para situações reais, ensinadas de forma acessível e progressiva.</p>
+          <h4>Sobrevivencialismo na Prática</h4>
+          <p>Técnicas reais, ensinadas de forma simples e direta, sem enrolação e sem precisar de equipamentos caros.</p>
         </div>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-check">✓</div>
         <div class="benefit-text">
-          <h4>Autossuficiência Prática</h4>
-          <p>Aprenda a produzir, conservar, economizar e organizar — com menos e de forma mais inteligente.</p>
+          <h4>Autossuficiência no Dia a Dia</h4>
+          <p>Produzir, conservar, economizar e organizar — com o que você tem, onde você está.</p>
         </div>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-check">✓</div>
         <div class="benefit-text">
-          <h4>Comunidade Alinhada</h4>
-          <p>Pessoas com os mesmos valores, dispostas a compartilhar experiências e crescer juntas.</p>
+          <h4>Comunidade com os Mesmos Valores</h4>
+          <p>Pessoas sérias, que trocam experiências reais e crescem juntas — sem achismo e sem papo de guru.</p>
         </div>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-check">✓</div>
         <div class="benefit-text">
-          <h4>Conteúdos Exclusivos</h4>
-          <p>Biblioteca, cursos, vídeos e materiais desenvolvidos especialmente para os membros AUTARKES.</p>
+          <h4>Conteúdo Exclusivo para Membros</h4>
+          <p>Biblioteca, cursos, vídeos e materiais feitos especificamente para quem está dentro da comunidade.</p>
         </div>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-check">✓</div>
         <div class="benefit-text">
-          <h4>Evolução Contínua</h4>
-          <p>Novos conteúdos adicionados regularmente para que você nunca pare de aprender e crescer.</p>
+          <h4>Sempre Tem Coisa Nova</h4>
+          <p>Conteúdo novo toda semana. Você nunca vai ficar parado — sempre tem algo útil para aprender.</p>
         </div>
       </div>
     </div>
@@ -1339,9 +1294,9 @@
           <li>Dependente dos sistemas modernos</li>
           <li>Despreparado para emergências</li>
           <li>Sem habilidades práticas reais</li>
-          <li>Sempre precisando de ajuda</li>
-          <li>Vulnerável a crises e falhas</li>
-          <li>Sem confiança em situações difíceis</li>
+          <li>Sempre precisando pedir ajuda</li>
+          <li>Vulnerável quando o sistema falha</li>
+          <li>Inseguro em situações fora do normal</li>
         </ul>
       </div>
       <div class="transform-arrow">
@@ -1351,12 +1306,12 @@
       <div class="transform-col">
         <div class="transform-col-label after-label">DEPOIS</div>
         <ul class="transform-list after-list">
-          <li>Mais preparado para o inesperado</li>
-          <li>Confiante em qualquer situação</li>
+          <li>Preparado para o que vier</li>
+          <li>Tranquilo em situações difíceis</li>
           <li>Capaz de resolver problemas reais</li>
-          <li>Mais autônomo e independente</li>
-          <li>Resiliente diante de adversidades</li>
-          <li>Uma referência para quem está ao redor</li>
+          <li>Mais independente no dia a dia</li>
+          <li>Seguro quando os outros entram em pânico</li>
+          <li>A pessoa que a família pode contar</li>
         </ul>
       </div>
     </div>
@@ -1371,11 +1326,11 @@
     <div class="testimonials-grid">
       <div class="testimonial reveal">
         <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Entrei sem saber nada de sobrevivencialismo. Em três meses, já montei minha reserva de emergência, aprendi técnicas básicas de primeiros socorros e me sinto muito mais seguro para proteger minha família. Vale cada centavo.</p>
+        <p class="testimonial-text">Entrei sem saber nada sobre isso. Em três meses já tinha montado minha reserva de emergência e aprendido primeiros socorros básicos. Me sinto muito mais calmo sabendo que minha família está protegida se algo acontecer.</p>
         <div class="testimonial-author">
           <div class="avatar avatar-1">RM</div>
           <div>
-            <span class="author-name">RAFAEL M.</span>
+            <span class="author-name">Rafael M.</span>
             <span class="author-role">Membro desde 2024</span>
           </div>
           <div class="stars">★★★★★</div>
@@ -1383,11 +1338,11 @@
       </div>
       <div class="testimonial reveal">
         <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Sempre me interessei por autossuficiência mas não sabia por onde começar. A AUTARKES organizou tudo de forma tão clara que consegui aplicar logo de início. Hoje tenho uma horta, aprendi conservação de alimentos e me sinto outra pessoa.</p>
+        <p class="testimonial-text">Sempre quis aprender sobre autossuficiência mas não sabia nem por onde começar. A AUTARKES organizou tudo de um jeito que eu consegui aplicar logo nas primeiras semanas. Hoje tenho horta em casa e sei conservar alimentos. Mudou minha rotina de verdade.</p>
         <div class="testimonial-author">
           <div class="avatar avatar-2">CA</div>
           <div>
-            <span class="author-name">CARLA A.</span>
+            <span class="author-name">Carla A.</span>
             <span class="author-role">Membro desde 2024</span>
           </div>
           <div class="stars">★★★★★</div>
@@ -1395,11 +1350,11 @@
       </div>
       <div class="testimonial reveal">
         <div class="testimonial-quote">"</div>
-        <p class="testimonial-text">Por R$14,90 eu esperava pouco. Me surpreendi com a qualidade e quantidade do conteúdo. A comunidade é ativa, as lives são práticas e os materiais são muito bem feitos. Recomendo para qualquer pessoa que quer ser mais capaz e independente.</p>
+        <p class="testimonial-text">Por R$14,90 eu esperava algo básico. Me surpreendi com a quantidade e a qualidade do que tem dentro. A comunidade é ativa, o pessoal é sério, as lives são úteis. Recomendo para qualquer um que quer parar de depender de tudo.</p>
         <div class="testimonial-author">
           <div class="avatar avatar-3">TS</div>
           <div>
-            <span class="author-name">TIAGO S.</span>
+            <span class="author-name">Tiago S.</span>
             <span class="author-role">Membro desde 2023</span>
           </div>
           <div class="stars">★★★★★</div>
@@ -1413,7 +1368,7 @@
 <section class="pricing" id="pricing">
   <div class="container">
     <div class="section-label" style="justify-content:center;">Investimento</div>
-    <h2 class="section-title reveal" style="text-align:center; max-width:700px; margin-left:auto; margin-right:auto;">Quanto vale aprender habilidades que ficam com você para a vida toda?</h2>
+    <h2 class="section-title reveal" style="text-align:center; max-width:700px; margin-left:auto; margin-right:auto;">Quanto vale saber se virar quando todo mundo está perdido?</h2>
     <div class="pricing-wrapper reveal">
       <div class="pricing-card">
         <div class="pricing-badge">Mais Popular</div>
@@ -1433,7 +1388,7 @@
           <div class="pricing-feature"><div class="check-icon">✓</div>Vídeos exclusivos e práticos</div>
           <div class="pricing-feature"><div class="check-icon">✓</div>Lives e reuniões ao vivo</div>
           <div class="pricing-feature"><div class="check-icon">✓</div>Comunidade ativa de membros</div>
-          <div class="pricing-feature"><div class="check-icon">✓</div>Atualizações e novos conteúdos constantes</div>
+          <div class="pricing-feature"><div class="check-icon">✓</div>Conteúdo novo toda semana</div>
         </div>
         <div class="pricing-cta">
           <a href="https://botgram.club/autarkes-premium" class="btn-pricing" target="_blank" rel="noopener"><span>Quero Entrar Agora</span></a>
@@ -1457,7 +1412,7 @@
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Sim. Assim que o pagamento for confirmado, você recebe acesso imediato a toda a plataforma — biblioteca, cursos, vídeos e comunidade. Não precisa esperar nada.</div>
+          <div class="faq-answer-inner">Sim. Assim que o pagamento for confirmado, você já entra. Nada de esperar aprovação ou receber e-mail de ativação depois de horas. É imediato mesmo.</div>
         </div>
       </div>
 
@@ -1467,37 +1422,37 @@
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Sim, sem burocracia. Você pode cancelar a qualquer momento pelo próprio painel, sem necessidade de entrar em contato com ninguém. Não há taxa de cancelamento nem fidelidade obrigatória.</div>
+          <div class="faq-answer-inner">Sim, sem burocracia e sem precisar falar com ninguém. Você cancela pelo próprio painel quando quiser. Não existe taxa de cancelamento nem prazo mínimo de permanência.</div>
         </div>
       </div>
 
       <div class="faq-item reveal">
         <button class="faq-question">
-          Preciso ter experiência prévia em sobrevivencialismo?
+          Preciso ter experiência prévia?
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Não. A comunidade foi desenvolvida para pessoas de todos os níveis — desde quem está começando do zero até quem já tem algum conhecimento e quer aprofundar. O conteúdo é progressivo e acessível.</div>
+          <div class="faq-answer-inner">Não precisa de nada. A comunidade foi feita para qualquer pessoa — desde quem está começando do zero até quem já sabe algumas coisas e quer aprofundar. O conteúdo é progressivo e direto ao ponto.</div>
         </div>
       </div>
 
       <div class="faq-item reveal">
         <button class="faq-question">
-          Novos conteúdos serão adicionados?
+          Novos conteúdos são adicionados com frequência?
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Sim, constantemente. Novos materiais, vídeos, guias, checklists e cursos são adicionados regularmente. Sua assinatura sempre te dá acesso a todo o conteúdo novo sem custo adicional.</div>
+          <div class="faq-answer-inner">Sim. Tem conteúdo novo toda semana — vídeos, guias, checklists, cursos. E tudo isso já está incluso na sua assinatura, sem cobrar nada extra.</div>
         </div>
       </div>
 
       <div class="faq-item reveal">
         <button class="faq-question">
-          A comunidade funciona no celular?
+          Funciona no celular?
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Sim. A plataforma é totalmente responsiva e funciona em qualquer dispositivo — celular, tablet ou computador. Você pode acessar seu conteúdo em qualquer lugar, a qualquer hora.</div>
+          <div class="faq-answer-inner">Funciona em qualquer dispositivo — celular, tablet ou computador. Você acessa quando quiser, de onde estiver, sem precisar instalar nada.</div>
         </div>
       </div>
 
@@ -1510,8 +1465,8 @@
   <div class="container">
     <div class="final-cta-content reveal">
       <div class="section-label" style="justify-content:center; margin-bottom:2rem;">Comece Agora</div>
-      <h2>Enquanto o mundo cria pessoas <span class="accent">dependentes</span>, você pode escolher se tornar mais preparado.</h2>
-      <p>Comece hoje por apenas R$14,90 por mês.</p>
+      <h2>Saber se virar é uma<br>habilidade. E você pode<br><span class="accent">aprender agora.</span></h2>
+      <p>Por R$14,90 por mês, você começa a construir algo que ninguém pode tirar de você.</p>
       <a href="https://botgram.club/autarkes-premium" class="btn-primary" target="_blank" rel="noopener"><span>Entrar na Comunidade AUTARKES</span></a>
     </div>
   </div>
@@ -1545,7 +1500,6 @@
 </footer>
 
 <script>
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -1557,7 +1511,6 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // FAQ accordion
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.parentElement;
@@ -1567,7 +1520,6 @@
     });
   });
 
-  // Nav scroll effect
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if (window.scrollY > 50) {
