@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Comunidade AUTARKES — Aprenda habilidades reais para se tornar mais preparado, autossuficiente e independente. Por apenas R$14,90/mês.">
-<title>AUTARKES — Comunidade sobre  Autossuficiência e Preparação</title>
+<title>AUTARKES — Comunidade de Autossuficiência e Preparação</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -221,17 +221,18 @@
   .btn-primary span { position: relative; z-index: 1; }
 
   .price-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--olive-light);
-    letter-spacing: 0.1em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--orange);
+    letter-spacing: 0.12em;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     text-transform: uppercase;
+    text-shadow: 0 0 30px rgba(217,119,6,0.4);
   }
 
-  .price-badge::before { content: '▸'; color: var(--orange); font-size: 0.6rem; }
+  .price-badge::before { content: '▸'; color: var(--olive-light); font-size: 1.2rem; }
 
   /* SCROLL INDICATOR */
   .scroll-indicator {
@@ -297,12 +298,13 @@
   }
 
   .problem-intro {
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     color: var(--gray);
     max-width: 700px;
     margin-bottom: 4rem;
     font-weight: 400;
     text-transform: none;
+    line-height: 1.75;
   }
 
   .problem-grid {
@@ -332,17 +334,18 @@
   .problem-card:hover { border-color: rgba(217,119,6,0.3); transform: translateY(-4px); }
   .problem-card:hover::before { height: 100%; }
 
-  .problem-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+  .problem-icon { font-size: 3rem; margin-bottom: 1.2rem; display: block; }
 
   .problem-card h3 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
+    font-size: 2.4rem;
     letter-spacing: 0.05em;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
     color: var(--text);
+    line-height: 1;
   }
 
-  .problem-card p { font-size: 1rem; color: var(--gray); line-height: 1.65; text-transform: none; }
+  .problem-card p { font-size: 1.2rem; color: var(--gray); line-height: 1.7; text-transform: none; font-weight: 400; }
 
   /* SOLUTION */
   .solution { position: relative; }
@@ -416,9 +419,10 @@
   .solution-text p {
     color: var(--gray);
     margin-bottom: 1.5rem;
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     font-weight: 400;
     text-transform: none;
+    line-height: 1.75;
   }
 
   .solution-pillars {
@@ -470,7 +474,7 @@
   }
 
   .benefit-check {
-    width: 30px; height: 30px;
+    width: 36px; height: 36px;
     background: rgba(85,107,47,0.15);
     border: 1px solid var(--olive);
     display: flex;
@@ -478,19 +482,20 @@
     justify-content: center;
     flex-shrink: 0;
     color: var(--olive-light);
-    font-size: 0.9rem;
-    margin-top: 2px;
+    font-size: 1.1rem;
+    margin-top: 4px;
   }
 
   .benefit-text h4 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     letter-spacing: 0.05em;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
     color: var(--text);
+    line-height: 1.1;
   }
 
-  .benefit-text p { font-size: 0.95rem; color: var(--muted); line-height: 1.55; text-transform: none; }
+  .benefit-text p { font-size: 1.1rem; color: var(--muted); line-height: 1.6; text-transform: none; }
 
   /* FEATURES */
   .features-grid {
