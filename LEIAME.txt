@@ -1,0 +1,8 @@
+COMO PUBLICAR UM TEXTO NOVO
+1. Crie posts/nome-do-texto.md e escreva o texto.
+2. Coloque as fotos em images/blog/ e use ![descrição](images/blog/foto.jpg) no texto.
+3. Abra posts/posts.json e adicione um bloco novo (slug = nome do arquivo sem .md).
+
+PARA TESTAR NO PC
+O blog usa fetch(), então não abre com duplo clique. Use a extensão "Live Server" do VS Code
+ou rode:  python3 -m http.server 8000  e abra http://localhost:8000/blog.html
